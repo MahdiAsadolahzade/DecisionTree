@@ -3,7 +3,8 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DecisionTree</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>insex</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
 <script>
   // Disable right-click context menu
   document.addEventListener('contextmenu', event => event.preventDefault());
@@ -20,7 +21,6 @@
       }
   };
 </script>
-
 
 
 <style type="text/css">
@@ -14595,7 +14595,109 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1>
+<p><strong>Table of contents</strong><a id='toc0_'></a></p>
+<ul>
+<li><a href="#toc1_">Introduction</a>    <ul>
+<li><a href="#toc1_1_">Abstract</a>    </li>
+<li><a href="#toc1_2_">About the Author</a>    </li>
+</ul>
+</li>
+<li><a href="#toc2_">Analysis Dataset</a>    <ul>
+<li><a href="#toc2_1_">Overview</a>    </li>
+<li><a href="#toc2_2_">Reading Dataset</a>    </li>
+<li><a href="#toc2_3_">Initial Data Exploration</a>    </li>
+<li><a href="#toc2_4_">Pre Processing</a>    <ul>
+<li><a href="#toc2_4_1_">ID</a>    </li>
+<li><a href="#toc2_4_2_">age</a>    </li>
+<li><a href="#toc2_4_3_">job</a>    </li>
+<li><a href="#toc2_4_4_">marital</a>    </li>
+<li><a href="#toc2_4_5_">education</a>    </li>
+<li><a href="#toc2_4_6_">default</a>    </li>
+<li><a href="#toc2_4_7_">balance</a>    </li>
+<li><a href="#toc2_4_8_">housing</a>    </li>
+<li><a href="#toc2_4_9_">loan</a>    </li>
+<li><a href="#toc2_4_10_">contact</a>    </li>
+<li><a href="#toc2_4_11_">day and month</a>    </li>
+<li><a href="#toc2_4_12_">duration</a>    </li>
+<li><a href="#toc2_4_13_">campaign</a>    </li>
+<li><a href="#toc2_4_14_">pdays , previous</a>    </li>
+<li><a href="#toc2_4_15_">poutcome</a>    </li>
+<li><a href="#toc2_4_16_">y</a>    </li>
+</ul>
+</li>
+<li><a href="#toc2_5_">Final Processed Dataset</a>    </li>
+</ul>
+</li>
+<li><a href="#toc3_">Implementation of decision tree</a>    <ul>
+<li><a href="#toc3_1_">Node Class</a>    <ul>
+<li><a href="#toc3_1_1_">Code</a>    </li>
+</ul>
+</li>
+<li><a href="#toc3_2_">DecisionTree Class</a>    <ul>
+<li><a href="#toc3_2_1_">Constructor</a>    </li>
+<li><a href="#toc3_2_2_">fit Method</a>    </li>
+<li><a href="#toc3_2_3_">_grow_tree Method</a>    </li>
+<li><a href="#toc3_2_4_">predict Method</a>    </li>
+<li><a href="#toc3_2_5_">_predict Method</a>    </li>
+<li><a href="#toc3_2_6_">_gini_impurity Method</a>    </li>
+<li><a href="#toc3_2_7_">_entropy Method</a>    </li>
+<li><a href="#toc3_2_8_">Entropy vs. Gini Index in Decision Trees</a>    <ul>
+<li><a href="#toc3_2_8_1_">Entropy (H)</a>    </li>
+<li><a href="#toc3_2_8_2_">Gini Index (G)</a>    </li>
+<li><a href="#toc3_2_8_3_">Differences</a>    </li>
+</ul>
+</li>
+<li><a href="#toc3_2_9_">Code</a>    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc4_">Training the Decision Tree Model</a>    <ul>
+<li><a href="#toc4_1_">Introduction</a>    </li>
+<li><a href="#toc4_2_">Explanation</a>    </li>
+<li><a href="#toc4_3_">Train-Test Split Ratio Evaluation</a>    <ul>
+<li><a href="#toc4_3_1_">Accuracy Comparison</a>    </li>
+<li><a href="#toc4_3_2_">Observations</a>    </li>
+</ul>
+</li>
+<li><a href="#toc4_4_">Decision Tree Models Based on Gini Impurity and Entropy</a>    <ul>
+<li><a href="#toc4_4_1_">Gini</a>    </li>
+<li><a href="#toc4_4_2_">Entropy</a>    </li>
+</ul>
+</li>
+<li><a href="#toc4_5_">Conclusion</a>    </li>
+</ul>
+</li>
+<li><a href="#toc5_">Cross-Validation Analysis with Mean Squared Error (MSE)</a>    <ul>
+<li><a href="#toc5_1_">Methodology</a>    <ul>
+<li><a href="#toc5_1_1_">Number of Folds</a>    </li>
+<li><a href="#toc5_1_2_">Decision Tree Classifiers</a>    </li>
+<li><a href="#toc5_1_3_">Evaluation Metric</a>    </li>
+</ul>
+</li>
+<li><a href="#toc5_2_">Results</a>    <ul>
+<li><a href="#toc5_2_1_">Mean Squared Error (MSE)</a>    </li>
+</ul>
+</li>
+<li><a href="#toc5_3_">Conclusion</a>    </li>
+</ul>
+</li>
+<li><a href="#toc6_">Decision Tree Display</a>    <ul>
+<li><a href="#toc6_1_">Overview</a>    </li>
+<li><a href="#toc6_2_">Description</a>    </li>
+<li><a href="#toc6_3_">Visual Representation</a>    </li>
+<li><a href="#toc6_4_">Results</a>    </li>
+</ul>
+</li>
+</ul>
+<!-- vscode-jupyter-toc-config
+    numbering=false
+    anchor=true
+    flat=false
+    minLevel=1
+    maxLevel=6
+    /vscode-jupyter-toc-config -->
+<!-- THIS CELL WILL BE REPLACED ON TOC UPDATE. DO NOT WRITE YOUR TEXT IN THIS CELL -->
 </div>
 </div>
 </div>
@@ -14606,7 +14708,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Abstract">Abstract<a class="anchor-link" href="#Abstract">&#182;</a></h2>
+<h1 id="Introduction"><a id="toc1_" /><a href="#toc0_">Introduction</a><a class="anchor-link" href="#Introduction">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Abstract"><a id="toc1_1_" /><a href="#toc0_">Abstract</a><a class="anchor-link" href="#Abstract">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14630,7 +14743,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="About-the-Author">About the Author<a class="anchor-link" href="#About-the-Author">&#182;</a></h2><p><strong>Mahdi Asadolahzade</strong></p>
+<h2 id="About-the-Author"><a id="toc1_2_" /><a href="#toc0_">About the Author</a><a class="anchor-link" href="#About-the-Author">&#182;</a></h2><p><strong>Mahdi Asadolahzade</strong></p>
 <ul>
 <li><strong>Background:</strong> Computer Sciense Student in IUST</li>
 <li><strong>Contact:</strong> mahdiasadi140@gmail.com</li>
@@ -14647,7 +14760,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Analysis-Dataset">Analysis Dataset<a class="anchor-link" href="#Analysis-Dataset">&#182;</a></h1>
+<h1 id="Analysis-Dataset"><a id="toc2_" /><a href="#toc0_">Analysis Dataset</a><a class="anchor-link" href="#Analysis-Dataset">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14658,7 +14771,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h2><p>In this section, we will perform a detailed analysis of the dataset and prepare it for building the Decision Tree model. The dataset is focused on bank customers, and our goal is to classify them based on key features and predict whether they will make long-term deposits.</p>
+<h2 id="Overview"><a id="toc2_1_" /><a href="#toc0_">Overview</a><a class="anchor-link" href="#Overview">&#182;</a></h2><p>In this section, we will perform a detailed analysis of the dataset and prepare it for building the Decision Tree model. The dataset is focused on bank customers, and our goal is to classify them based on key features and predict whether they will make long-term deposits.</p>
 
 </div>
 </div>
@@ -14670,7 +14783,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Reading-Dataset">Reading Dataset<a class="anchor-link" href="#Reading-Dataset">&#182;</a></h2>
+<h2 id="Reading-Dataset"><a id="toc2_2_" /><a href="#toc0_">Reading Dataset</a><a class="anchor-link" href="#Reading-Dataset">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14738,7 +14851,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Initial-Data-Exploration">Initial Data Exploration<a class="anchor-link" href="#Initial-Data-Exploration">&#182;</a></h2>
+<h2 id="Initial-Data-Exploration"><a id="toc2_3_" /><a href="#toc0_">Initial Data Exploration</a><a class="anchor-link" href="#Initial-Data-Exploration">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15016,7 +15129,7 @@ max       63.000000    871.000000    275.000000
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Pre-Processing">Pre Processing<a class="anchor-link" href="#Pre-Processing">&#182;</a></h2>
+<h2 id="Pre-Processing"><a id="toc2_4_" /><a href="#toc0_">Pre Processing</a><a class="anchor-link" href="#Pre-Processing">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15084,7 +15197,7 @@ max       63.000000    871.000000    275.000000
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="ID">ID<a class="anchor-link" href="#ID">&#182;</a></h3>
+<h3 id="ID"><a id="toc2_4_1_" /><a href="#toc0_">ID</a><a class="anchor-link" href="#ID">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15211,7 +15324,7 @@ max       63.000000    871.000000    275.000000
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="age">age<a class="anchor-link" href="#age">&#182;</a></h3>
+<h3 id="age"><a id="toc2_4_2_" /><a href="#toc0_">age</a><a class="anchor-link" href="#age">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15462,7 +15575,7 @@ so for missing data section :</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="job">job<a class="anchor-link" href="#job">&#182;</a></h3>
+<h3 id="job"><a id="toc2_4_3_" /><a href="#toc0_">job</a><a class="anchor-link" href="#job">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15666,7 +15779,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="marital">marital<a class="anchor-link" href="#marital">&#182;</a></h3>
+<h3 id="marital"><a id="toc2_4_4_" /><a href="#toc0_">marital</a><a class="anchor-link" href="#marital">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15791,7 +15904,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="education">education<a class="anchor-link" href="#education">&#182;</a></h3>
+<h3 id="education"><a id="toc2_4_5_" /><a href="#toc0_">education</a><a class="anchor-link" href="#education">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15916,7 +16029,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="default">default<a class="anchor-link" href="#default">&#182;</a></h3>
+<h3 id="default"><a id="toc2_4_6_" /><a href="#toc0_">default</a><a class="anchor-link" href="#default">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16069,7 +16182,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="balance">balance<a class="anchor-link" href="#balance">&#182;</a></h3>
+<h3 id="balance"><a id="toc2_4_7_" /><a href="#toc0_">balance</a><a class="anchor-link" href="#balance">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16304,22 +16417,6 @@ class="
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -16327,7 +16424,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="housing">housing<a class="anchor-link" href="#housing">&#182;</a></h3>
+<h3 id="housing"><a id="toc2_4_8_" /><a href="#toc0_">housing</a><a class="anchor-link" href="#housing">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16480,7 +16577,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="loan">loan<a class="anchor-link" href="#loan">&#182;</a></h3>
+<h3 id="loan"><a id="toc2_4_9_" /><a href="#toc0_">loan</a><a class="anchor-link" href="#loan">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16633,7 +16730,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="contact">contact<a class="anchor-link" href="#contact">&#182;</a></h3>
+<h3 id="contact"><a id="toc2_4_10_" /><a href="#toc0_">contact</a><a class="anchor-link" href="#contact">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16758,7 +16855,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="day-and-month">day and month<a class="anchor-link" href="#day-and-month">&#182;</a></h3>
+<h3 id="day-and-month"><a id="toc2_4_11_" /><a href="#toc0_">day and month</a><a class="anchor-link" href="#day-and-month">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16971,7 +17068,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="duration">duration<a class="anchor-link" href="#duration">&#182;</a></h3>
+<h3 id="duration"><a id="toc2_4_12_" /><a href="#toc0_">duration</a><a class="anchor-link" href="#duration">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -17142,7 +17239,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="campaign">campaign<a class="anchor-link" href="#campaign">&#182;</a></h3>
+<h3 id="campaign"><a id="toc2_4_13_" /><a href="#toc0_">campaign</a><a class="anchor-link" href="#campaign">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -17313,7 +17410,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="pdays-,-previous">pdays , previous<a class="anchor-link" href="#pdays-,-previous">&#182;</a></h3>
+<h3 id="pdays-,-previous"><a id="toc2_4_14_" /><a href="#toc0_">pdays , previous</a><a class="anchor-link" href="#pdays-,-previous">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -17526,7 +17623,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="poutcome">poutcome<a class="anchor-link" href="#poutcome">&#182;</a></h3>
+<h3 id="poutcome"><a id="toc2_4_15_" /><a href="#toc0_">poutcome</a><a class="anchor-link" href="#poutcome">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -17694,7 +17791,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="y">y<a class="anchor-link" href="#y">&#182;</a></h3>
+<h3 id="y"><a id="toc2_4_16_" /><a href="#toc0_">y</a><a class="anchor-link" href="#y">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -17750,22 +17847,6 @@ class="
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">copydf</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">copydf</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'yes'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'no'</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -17818,6 +17899,22 @@ Name: count, dtype: int64
 
 </div>
 
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">copydf</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">copydf</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'yes'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'no'</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -17876,7 +17973,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Final-Processed-Dataset">Final Processed Dataset<a class="anchor-link" href="#Final-Processed-Dataset">&#182;</a></h2>
+<h2 id="Final-Processed-Dataset"><a id="toc2_5_" /><a href="#toc0_">Final Processed Dataset</a><a class="anchor-link" href="#Final-Processed-Dataset">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -17951,7 +18048,7 @@ None
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Implementation-of-decision-tree">Implementation of decision tree<a class="anchor-link" href="#Implementation-of-decision-tree">&#182;</a></h1>
+<h1 id="Implementation-of-decision-tree"><a id="toc3_" /><a href="#toc0_">Implementation of decision tree</a><a class="anchor-link" href="#Implementation-of-decision-tree">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -17962,7 +18059,7 @@ None
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Node-Class">Node Class<a class="anchor-link" href="#Node-Class">&#182;</a></h2>
+<h2 id="Node-Class"><a id="toc3_1_" /><a href="#toc0_">Node Class</a><a class="anchor-link" href="#Node-Class">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -17985,7 +18082,7 @@ None
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Code">Code<a class="anchor-link" href="#Code">&#182;</a></h3>
+<h3 id="Code"><a id="toc3_1_1_" /><a href="#toc0_">Code</a><a class="anchor-link" href="#Code">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -18018,7 +18115,7 @@ None
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="DecisionTree-Class">DecisionTree Class<a class="anchor-link" href="#DecisionTree-Class">&#182;</a></h2>
+<h2 id="DecisionTree-Class"><a id="toc3_2_" /><a href="#toc0_">DecisionTree Class</a><a class="anchor-link" href="#DecisionTree-Class">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -18029,11 +18126,11 @@ None
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Constructor">Constructor<a class="anchor-link" href="#Constructor">&#182;</a></h3><ul>
+<h3 id="Constructor"><a id="toc3_2_1_" /><a href="#toc0_">Constructor</a><a class="anchor-link" href="#Constructor">&#182;</a></h3><ul>
 <li><code>max_depth</code>: Maximum depth of the tree.</li>
 <li><code>min_samples_split</code>: Minimum samples required to split a node.</li>
 </ul>
-<h3 id="fit-Method">fit Method<a class="anchor-link" href="#fit-Method">&#182;</a></h3><p>The <code>fit</code> method is used to train the decision tree classifier.</p>
+<h3 id="fit-Method"><a id="toc3_2_2_" /><a href="#toc0_">fit Method</a><a class="anchor-link" href="#fit-Method">&#182;</a></h3><p>The <code>fit</code> method is used to train the decision tree classifier.</p>
 <ul>
 <li>Parameters:<ul>
 <li><code>X</code>: Feature matrix.</li>
@@ -18042,7 +18139,7 @@ None
 </ul>
 </li>
 </ul>
-<h3 id="_grow_tree-Method">_grow_tree Method<a class="anchor-link" href="#_grow_tree-Method">&#182;</a></h3><p>The <code>_grow_tree</code> method recursively grows the decision tree by splitting nodes based on impurity measure.</p>
+<h3 id="_grow_tree-Method"><a id="toc3_2_3_" /><a href="#toc0_">_grow_tree Method</a><a class="anchor-link" href="#_grow_tree-Method">&#182;</a></h3><p>The <code>_grow_tree</code> method recursively grows the decision tree by splitting nodes based on impurity measure.</p>
 <ul>
 <li>Parameters:<ul>
 <li><code>X</code>: Feature matrix.</li>
@@ -18052,7 +18149,7 @@ None
 </ul>
 </li>
 </ul>
-<h3 id="predict-Method">predict Method<a class="anchor-link" href="#predict-Method">&#182;</a></h3><p>The <code>predict</code> method predicts the target labels for input features.</p>
+<h3 id="predict-Method"><a id="toc3_2_4_" /><a href="#toc0_">predict Method</a><a class="anchor-link" href="#predict-Method">&#182;</a></h3><p>The <code>predict</code> method predicts the target labels for input features.</p>
 <ul>
 <li>Parameters:<ul>
 <li><code>X</code>: Feature matrix.</li>
@@ -18063,7 +18160,7 @@ None
 </ul>
 </li>
 </ul>
-<h3 id="_predict-Method">_predict Method<a class="anchor-link" href="#_predict-Method">&#182;</a></h3><p>The <code>_predict</code> method recursively traverses the decision tree to predict target labels for input features.</p>
+<h3 id="_predict-Method"><a id="toc3_2_5_" /><a href="#toc0_">_predict Method</a><a class="anchor-link" href="#_predict-Method">&#182;</a></h3><p>The <code>_predict</code> method recursively traverses the decision tree to predict target labels for input features.</p>
 <ul>
 <li>Parameters:<ul>
 <li><code>x</code>: Input feature vector.</li>
@@ -18075,7 +18172,7 @@ None
 </ul>
 </li>
 </ul>
-<h3 id="_gini_impurity-Method">_gini_impurity Method<a class="anchor-link" href="#_gini_impurity-Method">&#182;</a></h3><p>The <code>_gini_impurity</code> method calculates the Gini impurity measure for a split.</p>
+<h3 id="_gini_impurity-Method"><a id="toc3_2_6_" /><a href="#toc0_">_gini_impurity Method</a><a class="anchor-link" href="#_gini_impurity-Method">&#182;</a></h3><p>The <code>_gini_impurity</code> method calculates the Gini impurity measure for a split.</p>
 <ul>
 <li>Parameters:<ul>
 <li><code>left_y</code>: Target labels of the left child node.</li>
@@ -18087,7 +18184,7 @@ None
 </ul>
 </li>
 </ul>
-<h3 id="_entropy-Method">_entropy Method<a class="anchor-link" href="#_entropy-Method">&#182;</a></h3><p>The <code>_entropy</code> method calculates the entropy impurity measure for a split.</p>
+<h3 id="_entropy-Method"><a id="toc3_2_7_" /><a href="#toc0_">_entropy Method</a><a class="anchor-link" href="#_entropy-Method">&#182;</a></h3><p>The <code>_entropy</code> method calculates the entropy impurity measure for a split.</p>
 <ul>
 <li>Parameters:<ul>
 <li><code>left_y</code>: Target labels of the left child node.</li>
@@ -18110,22 +18207,22 @@ None
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Entropy-vs.-Gini-Index-in-Decision-Trees">Entropy vs. Gini Index in Decision Trees<a class="anchor-link" href="#Entropy-vs.-Gini-Index-in-Decision-Trees">&#182;</a></h3><p>In decision tree algorithms, two commonly used impurity indices for evaluating the quality of splits are <strong>Entropy</strong> and <strong>Gini Index</strong>. These indices help the algorithm determine the optimal feature and value combination to split the dataset.</p>
-<h4 id="Entropy-(H)">Entropy (H)<a class="anchor-link" href="#Entropy-(H)">&#182;</a></h4><p>Entropy is a measure of impurity or disorder in a set of data. For a given dataset with multiple classes, the entropy is calculated using the formula:</p>
+<h3 id="Entropy-vs.-Gini-Index-in-Decision-Trees"><a id="toc3_2_8_" /><a href="#toc0_">Entropy vs. Gini Index in Decision Trees</a><a class="anchor-link" href="#Entropy-vs.-Gini-Index-in-Decision-Trees">&#182;</a></h3><p>In decision tree algorithms, two commonly used impurity indices for evaluating the quality of splits are <strong>Entropy</strong> and <strong>Gini Index</strong>. These indices help the algorithm determine the optimal feature and value combination to split the dataset.</p>
+<h4 id="Entropy-(H)"><a id="toc3_2_8_1_" /><a href="#toc0_">Entropy (H)</a><a class="anchor-link" href="#Entropy-(H)">&#182;</a></h4><p>Entropy is a measure of impurity or disorder in a set of data. For a given dataset with multiple classes, the entropy is calculated using the formula:</p>
 $$ H(S) = - \sum_{i=1}^{c} P_i \cdot \log_2(P_i) $$<ul>
 <li>$H(S)$ is the entropy of the dataset.</li>
 <li>$c$ is the number of classes.</li>
 <li>$P_i$ is the proportion of instances belonging to class $i$.</li>
 </ul>
 <p>Entropy ranges from 0 (pure dataset, all instances belong to a single class) to 1 (maximum impurity, instances are evenly distributed among classes).</p>
-<h4 id="Gini-Index-(G)">Gini Index (G)<a class="anchor-link" href="#Gini-Index-(G)">&#182;</a></h4><p>The Gini Index is another measure of impurity that evaluates how often a randomly chosen element would be incorrectly classified. For a given dataset, the Gini Index is calculated using the formula:</p>
+<h4 id="Gini-Index-(G)"><a id="toc3_2_8_2_" /><a href="#toc0_">Gini Index (G)</a><a class="anchor-link" href="#Gini-Index-(G)">&#182;</a></h4><p>The Gini Index is another measure of impurity that evaluates how often a randomly chosen element would be incorrectly classified. For a given dataset, the Gini Index is calculated using the formula:</p>
 $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 <li>$G(S)$ is the Gini Index of the dataset.</li>
 <li>$c$ is the number of classes.</li>
 <li>$P_i$ is the proportion of instances belonging to class $i$.</li>
 </ul>
 <p>Similar to entropy, the Gini Index ranges from 0 (pure dataset) to 1 (maximum impurity).</p>
-<h4 id="Differences">Differences<a class="anchor-link" href="#Differences">&#182;</a></h4><ul>
+<h4 id="Differences"><a id="toc3_2_8_3_" /><a href="#toc0_">Differences</a><a class="anchor-link" href="#Differences">&#182;</a></h4><ul>
 <li><p><strong>Interpretation</strong>: Entropy measures the uncertainty or disorder in the dataset, while the Gini Index measures the probability of misclassification.</p>
 </li>
 <li><p><strong>Output Range</strong>: Entropy has a range between 0 and 1, while the Gini Index also has a range between 0 and 1.</p>
@@ -18147,7 +18244,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Code">Code<a class="anchor-link" href="#Code">&#182;</a></h3>
+<h3 id="Code"><a id="toc3_2_9_" /><a href="#toc0_">Code</a><a class="anchor-link" href="#Code">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -18263,7 +18360,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Training-the-Decision-Tree-Model">Training the Decision Tree Model<a class="anchor-link" href="#Training-the-Decision-Tree-Model">&#182;</a></h1>
+<h1 id="Training-the-Decision-Tree-Model"><a id="toc4_" /><a href="#toc0_">Training the Decision Tree Model</a><a class="anchor-link" href="#Training-the-Decision-Tree-Model">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -18287,8 +18384,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span>
@@ -18319,8 +18415,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Split data into features (X) and target variable (y)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">copydf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">copydf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">copydf</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span>
 
 
@@ -18340,7 +18435,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Decision tree training is a fundamental process in machine learning used for classification and regression tasks. It involves building a tree-like model of decisions based on input features, where each internal node represents a feature and each leaf node represents a class label or regression value.</p>
+<h2 id="Introduction"><a id="toc4_1_" /><a href="#toc0_">Introduction</a><a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Decision tree training is a fundamental process in machine learning used for classification and regression tasks. It involves building a tree-like model of decisions based on input features, where each internal node represents a feature and each leaf node represents a class label or regression value.</p>
 
 </div>
 </div>
@@ -18352,7 +18447,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Explanation">Explanation<a class="anchor-link" href="#Explanation">&#182;</a></h2><p>Training a decision tree involves several steps:</p>
+<h2 id="Explanation"><a id="toc4_2_" /><a href="#toc0_">Explanation</a><a class="anchor-link" href="#Explanation">&#182;</a></h2><p>Training a decision tree involves several steps:</p>
 <ol>
 <li><p><strong>Data Preprocessing</strong>: The input data is preprocessed, including handling missing values, encoding categorical variables, and splitting the data into features and target variables.</p>
 </li>
@@ -18374,7 +18469,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Train-Test-Split-Ratio-Evaluation">Train-Test Split Ratio Evaluation<a class="anchor-link" href="#Train-Test-Split-Ratio-Evaluation">&#182;</a></h2>
+<h2 id="Train-Test-Split-Ratio-Evaluation"><a id="toc4_3_" /><a href="#toc0_">Train-Test Split Ratio Evaluation</a><a class="anchor-link" href="#Train-Test-Split-Ratio-Evaluation">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -18409,11 +18504,6 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
     <span class="c1"># Split the data into training and testing sets</span>
     <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">ratio</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
     
-    <span class="c1"># Reset the index of the training and testing sets</span>
-    <span class="c1"># X_train.reset_index(drop=True, inplace=True)</span>
-    <span class="c1"># X_test.reset_index(drop=True, inplace=True)</span>
-    <span class="c1"># y_train.reset_index(drop=True, inplace=True)</span>
-    <span class="c1"># y_test.reset_index(drop=True, inplace=True)</span>
 
     <span class="c1"># Initialize and train the decision tree classifier with Gini impurity</span>
     <span class="n">dt_classifier_gini</span> <span class="o">=</span> <span class="n">DecisionTree</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -18484,7 +18574,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Accuracy-Comparison">Accuracy Comparison<a class="anchor-link" href="#Accuracy-Comparison">&#182;</a></h3><p>The table below shows the accuracy of decision tree models trained with Gini impurity and entropy for different train-test split ratios:</p>
+<h3 id="Accuracy-Comparison"><a id="toc4_3_1_" /><a href="#toc0_">Accuracy Comparison</a><a class="anchor-link" href="#Accuracy-Comparison">&#182;</a></h3><p>The table below shows the accuracy of decision tree models trained with Gini impurity and entropy for different train-test split ratios:</p>
 <table>
 <thead><tr>
 <th>Train-Test Split Ratio</th>
@@ -18510,7 +18600,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </tr>
 </tbody>
 </table>
-<h3 id="Observations">Observations<a class="anchor-link" href="#Observations">&#182;</a></h3><ul>
+<h3 id="Observations"><a id="toc4_3_2_" /><a href="#toc0_">Observations</a><a class="anchor-link" href="#Observations">&#182;</a></h3><ul>
 <li>Both Gini impurity and entropy produce comparable accuracies across different train-test split ratios.</li>
 <li>The accuracy of both models is consistently high, indicating that the decision trees generalize well to unseen data.</li>
 <li>There is no significant difference in accuracy between models trained with Gini impurity and entropy, suggesting that either impurity measure can be effective for this dataset.</li>
@@ -18527,7 +18617,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Decision-Tree-Models-Based-on-Gini-Impurity-and-Entropy">Decision Tree Models Based on Gini Impurity and Entropy<a class="anchor-link" href="#Decision-Tree-Models-Based-on-Gini-Impurity-and-Entropy">&#182;</a></h2>
+<h2 id="Decision-Tree-Models-Based-on-Gini-Impurity-and-Entropy"><a id="toc4_4_" /><a href="#toc0_">Decision Tree Models Based on Gini Impurity and Entropy</a><a class="anchor-link" href="#Decision-Tree-Models-Based-on-Gini-Impurity-and-Entropy">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -18539,8 +18629,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -18555,7 +18644,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Gini">Gini<a class="anchor-link" href="#Gini">&#182;</a></h3>
+<h3 id="Gini"><a id="toc4_4_1_" /><a href="#toc0_">Gini</a><a class="anchor-link" href="#Gini">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -18568,7 +18657,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dt_classifier_gini</span> <span class="o">=</span> <span class="n">DecisionTree</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">dt_classifier_gini</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="s1">'gini'</span><span class="p">)</span>
+<span class="n">dt_classifier_gini</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="s2">"gini"</span><span class="p">)</span>
 
 
 <span class="n">predictions_gini</span> <span class="o">=</span> <span class="n">dt_classifier_gini</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -18613,7 +18702,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Entropy">Entropy<a class="anchor-link" href="#Entropy">&#182;</a></h3>
+<h3 id="Entropy"><a id="toc4_4_2_" /><a href="#toc0_">Entropy</a><a class="anchor-link" href="#Entropy">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -18671,7 +18760,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Based on the analysis, it can be concluded that the decision tree models perform well on the dataset, achieving high accuracy regardless of the impurity measure used. Further experimentation with hyperparameters or feature engineering may help improve model performance, but the current results demonstrate the effectiveness of decision trees for this classification task.</p>
+<h2 id="Conclusion"><a id="toc4_5_" /><a href="#toc0_">Conclusion</a><a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Based on the analysis, it can be concluded that the decision tree models perform well on the dataset, achieving high accuracy regardless of the impurity measure used. Further experimentation with hyperparameters or feature engineering may help improve model performance, but the current results demonstrate the effectiveness of decision trees for this classification task.</p>
 
 </div>
 </div>
@@ -18683,7 +18772,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Cross-Validation-Analysis-with-Mean-Squared-Error-(MSE)">Cross-Validation Analysis with Mean Squared Error (MSE)<a class="anchor-link" href="#Cross-Validation-Analysis-with-Mean-Squared-Error-(MSE)">&#182;</a></h1><p>In this analysis, we performed cross-validation to estimate the performance of decision tree classifiers trained with Gini impurity and entropy. Cross-validation helps in obtaining a more accurate evaluation of the model's performance by splitting the dataset into multiple subsets and training the model on different combinations of these subsets.</p>
+<h1 id="Cross-Validation-Analysis-with-Mean-Squared-Error-(MSE)"><a id="toc5_" /><a href="#toc0_">Cross-Validation Analysis with Mean Squared Error (MSE)</a><a class="anchor-link" href="#Cross-Validation-Analysis-with-Mean-Squared-Error-(MSE)">&#182;</a></h1><p>In this analysis, we performed cross-validation to estimate the performance of decision tree classifiers trained with Gini impurity and entropy. Cross-validation helps in obtaining a more accurate evaluation of the model's performance by splitting the dataset into multiple subsets and training the model on different combinations of these subsets.</p>
 
 </div>
 </div>
@@ -18695,13 +18784,13 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Methodology">Methodology<a class="anchor-link" href="#Methodology">&#182;</a></h2><h3 id="Number-of-Folds">Number of Folds<a class="anchor-link" href="#Number-of-Folds">&#182;</a></h3><p>We used KFold cross-validation with 5 folds. This means the dataset was divided into 5 subsets, and the model was trained and evaluated 5 times, each time using a different subset as the test set.</p>
-<h3 id="Decision-Tree-Classifiers">Decision Tree Classifiers<a class="anchor-link" href="#Decision-Tree-Classifiers">&#182;</a></h3><p>We trained two decision tree classifiers:</p>
+<h2 id="Methodology"><a id="toc5_1_" /><a href="#toc0_">Methodology</a><a class="anchor-link" href="#Methodology">&#182;</a></h2><h3 id="Number-of-Folds"><a id="toc5_1_1_" /><a href="#toc0_">Number of Folds</a><a class="anchor-link" href="#Number-of-Folds">&#182;</a></h3><p>We used KFold cross-validation with 5 folds. This means the dataset was divided into 5 subsets, and the model was trained and evaluated 5 times, each time using a different subset as the test set.</p>
+<h3 id="Decision-Tree-Classifiers"><a id="toc5_1_2_" /><a href="#toc0_">Decision Tree Classifiers</a><a class="anchor-link" href="#Decision-Tree-Classifiers">&#182;</a></h3><p>We trained two decision tree classifiers:</p>
 <ul>
 <li><strong>Gini Impurity:</strong> Decision tree trained using Gini impurity as the criterion.</li>
 <li><strong>Entropy:</strong> Decision tree trained using entropy as the criterion.</li>
 </ul>
-<h3 id="Evaluation-Metric">Evaluation Metric<a class="anchor-link" href="#Evaluation-Metric">&#182;</a></h3><p>The performance of the models was evaluated using Mean Squared Error (MSE). MSE measures the average squared difference between the actual and predicted values. Lower MSE indicates better model performance.</p>
+<h3 id="Evaluation-Metric"><a id="toc5_1_3_" /><a href="#toc0_">Evaluation Metric</a><a class="anchor-link" href="#Evaluation-Metric">&#182;</a></h3><p>The performance of the models was evaluated using Mean Squared Error (MSE). MSE measures the average squared difference between the actual and predicted values. Lower MSE indicates better model performance.</p>
 
 </div>
 </div>
@@ -18718,7 +18807,7 @@ $$ G(S) = 1 - \sum_{i=1}^{c} P_i^2 $$<ul>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 
 <span class="c1"># Define the number of folds for cross-validation</span>
-<span class="n">n_splits</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># You can adjust the number of folds as needed</span>
+<span class="n">n_splits</span> <span class="o">=</span> <span class="mi">5</span> 
 
 <span class="c1"># Initialize lists to store MSE values for each fold</span>
 <span class="n">mse_scores_gini</span> <span class="o">=</span> <span class="p">[]</span>
@@ -18796,11 +18885,11 @@ Mean Squared Error (Entropy): 0.10715065101374868
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><h3 id="Mean-Squared-Error-(MSE)">Mean Squared Error (MSE)<a class="anchor-link" href="#Mean-Squared-Error-(MSE)">&#182;</a></h3><ul>
+<h2 id="Results"><a id="toc5_2_" /><a href="#toc0_">Results</a><a class="anchor-link" href="#Results">&#182;</a></h2><h3 id="Mean-Squared-Error-(MSE)"><a id="toc5_2_1_" /><a href="#toc0_">Mean Squared Error (MSE)</a><a class="anchor-link" href="#Mean-Squared-Error-(MSE)">&#182;</a></h3><ul>
 <li><strong>Gini Impurity:</strong> Mean MSE across all folds: <em>10.14%</em></li>
 <li><strong>Entropy:</strong> Mean MSE across all folds: <em>10.71%</em></li>
 </ul>
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>The mean squared error (MSE) values obtained from cross-validation provide insights into the predictive performance of decision tree classifiers trained with Gini impurity and entropy. These results can help in selecting the most suitable criterion for building decision trees based on the specific requirements and characteristics of the dataset.</p>
+<h2 id="Conclusion"><a id="toc5_3_" /><a href="#toc0_">Conclusion</a><a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>The mean squared error (MSE) values obtained from cross-validation provide insights into the predictive performance of decision tree classifiers trained with Gini impurity and entropy. These results can help in selecting the most suitable criterion for building decision trees based on the specific requirements and characteristics of the dataset.</p>
 
 </div>
 </div>
@@ -18812,7 +18901,7 @@ Mean Squared Error (Entropy): 0.10715065101374868
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Decision-Tree-Display">Decision Tree Display<a class="anchor-link" href="#Decision-Tree-Display">&#182;</a></h1>
+<h1 id="Decision-Tree-Display"><a id="toc6_" /><a href="#toc0_">Decision Tree Display</a><a class="anchor-link" href="#Decision-Tree-Display">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -18823,8 +18912,8 @@ Mean Squared Error (Entropy): 0.10715065101374868
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h2><p>In this section, we visualize the decision trees built using the DecisionTree class. We have utilized the Graphviz library to render the decision trees in a graphical format, providing an intuitive representation of the decision-making process within the model.</p>
-<h2 id="Description">Description<a class="anchor-link" href="#Description">&#182;</a></h2><p>The decision tree display showcases the hierarchical structure of the decision trees constructed using the Gini impurity and entropy criteria. Each node in the tree represents a decision based on a specific feature and threshold value, guiding the classification process. The terminal nodes, also known as leaf nodes, indicate the predicted class for a given set of features.</p>
+<h2 id="Overview"><a id="toc6_1_" /><a href="#toc0_">Overview</a><a class="anchor-link" href="#Overview">&#182;</a></h2><p>In this section, we visualize the decision trees built using the DecisionTree class. We have utilized the Graphviz library to render the decision trees in a graphical format, providing an intuitive representation of the decision-making process within the model.</p>
+<h2 id="Description"><a id="toc6_2_" /><a href="#toc0_">Description</a><a class="anchor-link" href="#Description">&#182;</a></h2><p>The decision tree display showcases the hierarchical structure of the decision trees constructed using the Gini impurity and entropy criteria. Each node in the tree represents a decision based on a specific feature and threshold value, guiding the classification process. The terminal nodes, also known as leaf nodes, indicate the predicted class for a given set of features.</p>
 
 </div>
 </div>
@@ -18847,9 +18936,6 @@ Mean Squared Error (Entropy): 0.10715065101374868
         <span class="n">print_tree</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s2">"Right branch:"</span><span class="p">)</span>
         <span class="n">print_tree</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">)</span>
-
-<span class="c1"># Assuming X_train.columns contains the feature names</span>
-<span class="n">print_tree</span><span class="p">(</span><span class="n">dt_classifier_gini</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -19004,6 +19090,38 @@ Right branch:
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">print_tree</span><span class="p">(</span><span class="n">dt_classifier_gini</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">print_tree</span><span class="p">(</span><span class="n">dt_classifier_entropy</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -19011,7 +19129,7 @@ Right branch:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Visual-Representation">Visual Representation<a class="anchor-link" href="#Visual-Representation">&#182;</a></h2><p>The decision trees are visualized as directed graphs, where each node represents a decision rule and each edge denotes the outcome of that decision. The features used for splitting and their corresponding thresholds are displayed within the nodes, providing insight into the decision-making process. Additionally, the nodes are labeled with the predicted class or feature information.</p>
+<h2 id="Visual-Representation"><a id="toc6_3_" /><a href="#toc0_">Visual Representation</a><a class="anchor-link" href="#Visual-Representation">&#182;</a></h2><p>The decision trees are visualized as directed graphs, where each node represents a decision rule and each edge denotes the outcome of that decision. The features used for splitting and their corresponding thresholds are displayed within the nodes, providing insight into the decision-making process. Additionally, the nodes are labeled with the predicted class or feature information.</p>
 
 </div>
 </div>
@@ -19043,7 +19161,7 @@ Right branch:
     <span class="n">build_dot_tree</span><span class="p">(</span><span class="n">dot</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">)</span>
     <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'png'</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Assuming you have a list of feature names</span>
+
 <span class="n">feature_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="c1"># Visualize the decision tree with Gini Impurity</span>
@@ -19065,7 +19183,7 @@ Right branch:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2>
+<h2 id="Results"><a id="toc6_4_" /><a href="#toc0_">Results</a><a class="anchor-link" href="#Results">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -19083,13 +19201,11 @@ Right branch:
 
 <span class="n">image_path</span> <span class="o">=</span> <span class="s1">'decision_tree_gini.png'</span>
 
-
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
 <span class="n">desired_width</span> <span class="o">=</span> <span class="mi">2000</span>
 <span class="n">desired_height</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">desired_width</span><span class="p">,</span> <span class="n">desired_height</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">LANCZOS</span><span class="p">)</span>
-
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -19148,7 +19264,6 @@ class="
 <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">desired_width</span><span class="p">,</span> <span class="n">desired_height</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">LANCZOS</span><span class="p">)</span>
 
 
-
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -19185,22 +19300,6 @@ class="
 
 </div>
 
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
 </div>
 
 </div>
